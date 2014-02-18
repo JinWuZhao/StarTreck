@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+   <Item Type="IntegerUpDown" Name="Node Tag" Key = "Tag" Default="10000" />
+   <Item Type="ComboBox" Name="IsVisible" Key = "Visible" Default="0" >
+    <Childes>
+      <Child Name="True" ID="1"/>
+      <Child Name="False" ID="0"/>
+    </Childes>
+  </Item>
+</Root>

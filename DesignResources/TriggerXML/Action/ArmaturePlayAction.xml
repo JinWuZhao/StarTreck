@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="IntegerUpDown" Name="Node Tag" Key = "Tag" Default="10000" />
+  <Item Type="TextBox" Name="ComName"  Key = "componentName" Default="CCArmature" />
+  <Item Type="TextBox" Name="AniName"  Key = "AnimationName" Default="run" />
+</Root>

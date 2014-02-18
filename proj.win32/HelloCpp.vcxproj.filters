@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scenes">
+      <UniqueIdentifier>{8b064bcd-feba-4f64-a058-4f66ee5e32e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\components">
+      <UniqueIdentifier>{10fe012e-3030-42bb-8b28-cf90867b765f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scripts">
+      <UniqueIdentifier>{6307ca85-3aba-4ac7-affe-13ef1d2b98b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scripts\actors">
+      <UniqueIdentifier>{5ee33314-6e26-419a-a499-eb3e8738a08f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Layers">
+      <UniqueIdentifier>{8b2a670a-e63a-4022-b356-f85417a2d072}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene.cpp">
+      <Filter>Classes\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainMenuScene.cpp">
+      <Filter>Classes\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoadingScreen.cpp">
+      <Filter>Classes\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SplashScreen.cpp">
+      <Filter>Classes\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Actor.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plane.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Planet.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\VisibleRect.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ScriptBase.cpp">
+      <Filter>Classes\scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCComScript.cpp">
+      <Filter>Classes\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NodeInit.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PhysicsWorld.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCComRigidBody.cpp">
+      <Filter>Classes\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GLES-Render.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DebugLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene.h">
+      <Filter>Classes\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainMenuScene.h">
+      <Filter>Classes\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoadingScreen.h">
+      <Filter>Classes\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SplashScreen.h">
+      <Filter>Classes\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Actor.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Planet.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plane.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\VisibleRect.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScriptBase.h">
+      <Filter>Classes\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCComScript.h">
+      <Filter>Classes\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NodeInit.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PhysicsWorld.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCComRigidBody.h">
+      <Filter>Classes\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GLES-Render.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DebugLayer.h">
+      <Filter>Classes\Layers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

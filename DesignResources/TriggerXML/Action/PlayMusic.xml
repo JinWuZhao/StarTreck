@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="IntegerUpDown" Name="Node Tag" Key = "Tag" Default="10000"/>
+  <Item Type="TextBox" Name="ComName"  Key = "componentName" Default="CCComAudio"/>
+  <Item Type="ComboBox" Name="MusicType" Key = "type" Default="1">
+    <Childes>
+      <Child Name="BackgroundMusic" ID="0"/>
+      <Child Name="Effect" ID="1"/>
+    </Childes>
+  </Item>
+</Root>
