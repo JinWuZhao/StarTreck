@@ -19,8 +19,11 @@
     <Filter Include="Classes\scripts\actors">
       <UniqueIdentifier>{5ee33314-6e26-419a-a499-eb3e8738a08f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Layers">
+    <Filter Include="Classes\layers">
       <UniqueIdentifier>{8b2a670a-e63a-4022-b356-f85417a2d072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\utils">
+      <UniqueIdentifier>{5ae50361-5a69-439d-83ff-e001565ca584}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,29 +57,35 @@
     <ClCompile Include="..\Classes\Planet.cpp">
       <Filter>Classes\scripts\actors</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\VisibleRect.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\ScriptBase.cpp">
       <Filter>Classes\scripts</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\CCComScript.cpp">
       <Filter>Classes\components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\NodeInit.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PhysicsWorld.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\CCComRigidBody.cpp">
       <Filter>Classes\components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GLES-Render.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\DebugLayer.cpp">
-      <Filter>Classes\Layers</Filter>
+      <Filter>Classes\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCComGravity.cpp">
+      <Filter>Classes\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\VisibleRect.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PhysicsWorld.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NodeInit.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GLES-Render.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCComPlanet.cpp">
+      <Filter>Classes\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,29 +119,35 @@
     <ClInclude Include="..\Classes\Plane.h">
       <Filter>Classes\scripts\actors</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\VisibleRect.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\ScriptBase.h">
       <Filter>Classes\scripts</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CCComScript.h">
       <Filter>Classes\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\NodeInit.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PhysicsWorld.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\CCComRigidBody.h">
       <Filter>Classes\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GLES-Render.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\DebugLayer.h">
-      <Filter>Classes\Layers</Filter>
+      <Filter>Classes\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCComGravity.h">
+      <Filter>Classes\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\VisibleRect.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PhysicsWorld.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NodeInit.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GLES-Render.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCComPlanet.h">
+      <Filter>Classes\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #define __CCCOMSCRIPT_H__
 
 #include "cocos2d.h"
+#include <string>
 
 class ScriptBase;
 
@@ -13,6 +14,8 @@ private:
 public:
 	virtual ~CCComScript(void);
 
+	static CCComScript* create(void);
+
 	virtual bool init();
     virtual void onEnter();
     virtual void onExit();
@@ -20,7 +23,7 @@ public:
 
 	void setScript(ScriptBase* pScript);
 
-	static CCComScript* create(void);
+	std::string getScriptName(void);
 
 private:
 	ScriptBase*		m_pScript;

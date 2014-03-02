@@ -6,7 +6,8 @@ USING_NS_CC;
 
 static NodeInitiator* _sharedNodeInitiator = NULL;
 NodeInitiator::NodeInitiator(void)
-	: CCObject()
+	: CCObject(),
+	m_pRootNode(NULL)
 {
 }
 
@@ -46,6 +47,7 @@ bool NodeInitiator::initNodeWithScript( cocos2d::CCNode* pNode, ScriptBase* pScr
 
 bool NodeInitiator::initAllNodes( cocos2d::CCNode* pRoot )
 {
+	m_pRootNode = pRoot;
 	bool bRet = false;
 	do 
 	{
@@ -80,6 +82,10 @@ ScriptBase* NodeInitiator::createScript( int tag )
 		pScript = new Planet();
 		break;
 		//////////////////////////////////////////////////////////////////////////
+	}
+	if (pScript)
+	{
+		pScript->setRootNode(m_pRootNode);
 	}
 	return pScript;
 }

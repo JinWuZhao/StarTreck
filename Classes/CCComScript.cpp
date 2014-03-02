@@ -72,3 +72,8 @@ CCComScript* CCComScript::create( void )
 	}
 	return pRet;
 }
+
+std::string CCComScript::getScriptName(void)
+{
+	return m_pScript->getName();
+}

@@ -19,11 +19,13 @@ public:
 
 	bool initNodeWithScript(cocos2d::CCNode* pNode, ScriptBase* pScript);
 
-	static ScriptBase* createScript(int tag);
+	ScriptBase* createScript(int tag);
 
 private:
 	//recursion
 	bool traverseChildren(cocos2d::CCNode* pRoot);
+
+	cocos2d::CCNode*	m_pRootNode; //CocoStudioÖÐµÄRootNode
 };
 
 #endif

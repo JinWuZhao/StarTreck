@@ -6,7 +6,11 @@ static PhysicsWorld*	_sharedPhysicsWorld = NULL;
 
 PhysicsWorld::PhysicsWorld( void )
 	: CCObject(),
-	m_pB2World(NULL), m_nPTM_RATIO(10), m_bIsActive(false)
+	m_pB2World(NULL), 
+	m_nPTM_RATIO(5.f),
+	m_nMTP_RATIO(1.f/m_nPTM_RATIO),
+	m_bIsActive(false), 
+	m_nGConst(0.1f)
 {
 
 }
@@ -46,5 +50,24 @@ void PhysicsWorld::update( float dt )
 void PhysicsWorld::end()
 {
 	m_bIsActive = false;
+	m_BodyList.clear();
 	CC_SAFE_DELETE(m_pB2World);
+}
+
+void PhysicsWorld::addToBackupList(b2Body* pBody)
+{
+	if (pBody->GetType() == b2_dynamicBody)
+	{
+		m_BodyList.push_back(pBody);
+	}
+}
+
+void PhysicsWorld::getBackupList(std::list<b2Body*>& bodyList)
+{
+	bodyList = m_BodyList;
+}
+
+void PhysicsWorld::removeFromBackupList(b2Body* pBody)
+{
+	m_BodyList.remove(pBody);
 }

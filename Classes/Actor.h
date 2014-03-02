@@ -3,8 +3,6 @@
 
 #include "ScriptBase.h"
 
-class CCComRigidBody;
-
 class Actor :
 	public ScriptBase
 {
@@ -15,9 +13,6 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 	virtual void end();
-
-protected:
-	CCComRigidBody*			m_pRigidBody;
 };
 
 #endif

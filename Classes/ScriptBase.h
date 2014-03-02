@@ -2,6 +2,7 @@
 #define __SCRIPTBASE_H__
 
 #include "cocos2d.h"
+#include <string>
 
 class ScriptBase :
 	public cocos2d::CCObject
@@ -15,6 +16,9 @@ public:
 	virtual void end();
 
 	void setNdoe(cocos2d::CCNode* pNode);
+
+	CC_SYNTHESIZE(std::string, m_strName, Name);
+	CC_SYNTHESIZE(cocos2d::CCNode*, m_pRootNode, RootNode);
 
 protected:
 	cocos2d::CCNode*			m_pNode;

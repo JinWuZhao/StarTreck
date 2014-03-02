@@ -24,18 +24,16 @@ void GameScene::onEnter()
 		//create Physics World
 		CC_BREAK_IF(!PhysicsWorld::sharedPhysicsWorld()->init());
 
+		DebugLayer* debugLayer = DebugLayer::create();
+		CC_BREAK_IF(!debugLayer);
+		addChild(debugLayer, DEBUGLAYER_Z_ORDER);
+
 		//load scenenodes
 		CCNode* pSceneRoot = SceneReader::sharedSceneReader()->createNodeWithSceneFile("DesignResources.json");
 		CC_BREAK_IF(!pSceneRoot);
-		addChild(pSceneRoot);
-		pSceneRoot->setZOrder(ACTOR_Z_ORDER);
+		addChild(pSceneRoot, ACTOR_Z_ORDER);
 
 		CC_BREAK_IF(!NodeInitiator::sharedNodeInitiator()->initAllNodes(pSceneRoot));
-
-		DebugLayer* debugLayer = DebugLayer::create();
-		CC_BREAK_IF(!debugLayer);
-		addChild(debugLayer);
-		debugLayer->setZOrder(DEBUGLAYER_Z_ORDER);
 
 	} while (0);
 
@@ -45,6 +43,7 @@ void GameScene::onExit()
 {
 	CCScene::onExit();
 	CCLOG("------------------GameScene::onExit()-----------------");
+	unscheduleUpdate();
 	
 	PhysicsWorld::sharedPhysicsWorld()->end();
 }

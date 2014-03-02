@@ -4,8 +4,7 @@
 USING_NS_CC;
 
 Actor::Actor(void)
-	: ScriptBase(),
-	m_pRigidBody(NULL)
+	: ScriptBase()
 {
 }
 
@@ -20,11 +19,11 @@ bool Actor::init()
 	do 
 	{
 		//CCLOG("Actor::init() begin.");
-		m_pRigidBody = CCComRigidBody::create();
-		CC_BREAK_IF(!m_pRigidBody);
-		if (!m_pNode->addComponent(m_pRigidBody))
+		CCComRigidBody* comRigidBody = CCComRigidBody::create();
+		CC_BREAK_IF(!comRigidBody);
+		if (!m_pNode->addComponent(comRigidBody))
 		{
-			CC_SAFE_DELETE(m_pRigidBody);
+			CC_SAFE_DELETE(comRigidBody);
 			break;
 		}
 		bRet = true;

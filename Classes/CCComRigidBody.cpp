@@ -5,7 +5,7 @@ USING_NS_CC;
 
 CCComRigidBody::CCComRigidBody( void )
 	: CCComponent(),
-	m_pBody(NULL)
+	m_pBody(NULL), m_bBackup(false)
 {
 }
 
@@ -51,6 +51,10 @@ void CCComRigidBody::onExit()
 	{
 		if (m_pBody)
 		{
+			if (m_bBackup)
+			{
+				PhysicsWorld::sharedPhysicsWorld()->removeFromBackupList(m_pBody);
+			}
 			PhysicsWorld::sharedPhysicsWorld()->getB2World()->DestroyBody(m_pBody);
 		}
 	}
@@ -62,18 +66,24 @@ void CCComRigidBody::update( float delta )
 	if (m_pBody)
 	{
 		b2Vec2 pos = m_pBody->GetPosition();
-		pos.x /= PhysicsWorld::sharedPhysicsWorld()->getRatio();
-		pos.y /= PhysicsWorld::sharedPhysicsWorld()->getRatio();
+		pos.x *= PhysicsWorld::sharedPhysicsWorld()->getM2pRatio();
+		pos.y *= PhysicsWorld::sharedPhysicsWorld()->getM2pRatio();
 		m_pOwner->setPosition(pos.x, pos.y);
 		m_pOwner->setRotation(m_pBody->GetAngle()*180);
 	}
 }
 
-b2Body* CCComRigidBody::createBody( const b2BodyDef& bodyDef )
+b2Body* CCComRigidBody::createBody(const b2BodyDef& bodyDef, bool bBackup)
 {
 	if (!m_pBody)
 	{
 		m_pBody = PhysicsWorld::sharedPhysicsWorld()->getB2World()->CreateBody(&bodyDef);
+		m_pBody->SetUserData((void*)m_pOwner);
+		if (bBackup)
+		{
+			m_bBackup = true;
+			PhysicsWorld::sharedPhysicsWorld()->addToBackupList(m_pBody);
+		}
 	}
 	return m_pBody;
 }

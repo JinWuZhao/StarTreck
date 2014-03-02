@@ -19,7 +19,7 @@ public:
 	virtual void onExit();
 	virtual void update(float delta);
 
-	b2Body* createBody(const b2BodyDef& bodyDef);
+	b2Body* createBody(const b2BodyDef& bodyDef, bool bBackup = false);
 
 	b2Fixture* createFixture(const b2FixtureDef& fixtureDef);
 
@@ -31,10 +31,8 @@ public:
 
 	void applyTorque(float torque);
 
-
-
-private:
-	b2Body*					m_pBody;
+	CC_SYNTHESIZE_READONLY(b2Body*, m_pBody, Body);
+	CC_SYNTHESIZE_READONLY(bool, m_bBackup, Backup);
 };
 
 #endif

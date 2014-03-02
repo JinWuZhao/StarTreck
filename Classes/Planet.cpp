@@ -3,6 +3,8 @@
 #include "cocos-ext.h"
 #include "PhysicsWorld.h"
 #include "CCComRigidBody.h"
+#include "CCComGravity.h"
+#include "CCComPlanet.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -26,26 +28,25 @@ bool Planet::init()
 		CCLOG("Planet::init() begin.");
 		CC_BREAK_IF(!Actor::init());
 
-		//get bounding box
-		CCComRender* comRender = static_cast<CCComRender*>(m_pNode->getComponent("CCArmature"));
-		CCArmature* pArmature = static_cast<CCArmature*>(comRender->getNode());
-		CCRect	bbox = pArmature->boundingBox();
-		//create body
-		b2BodyDef bodyDef;
-		bodyDef.type = b2_dynamicBody;
-		float ratio = PhysicsWorld::sharedPhysicsWorld()->getRatio();
-		CCPoint pos = m_pNode->getPosition();
-		bodyDef.position = b2Vec2( ratio*pos.x, ratio*pos.y);
-		CC_BREAK_IF(m_pRigidBody->createBody(bodyDef));
-		//create fixture
-		b2CircleShape	shape;
-		shape.m_radius = bbox.size.width/2*ratio*m_pNode->getScale();
-		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &shape;
-		fixtureDef.density = 10;
-		fixtureDef.friction = 1;
-		fixtureDef.restitution = 0;
-		CC_BREAK_IF(m_pRigidBody->createFixture(fixtureDef));
+		CCComPlanet* comPlanet = CCComPlanet::create();
+		CC_BREAK_IF(!comPlanet);
+		if (!m_pNode->addComponent(comPlanet))
+		{
+			CC_SAFE_DELETE(comPlanet);
+			return false;
+		}
+		if (m_pNode->getTag() == 10200)
+		{
+			comPlanet->setCenterPlanet(m_pRootNode->getChildByTag(10100));
+		}
+		CCComGravity* comGravity = CCComGravity::create();
+		CC_BREAK_IF(!comGravity);
+		if (!m_pNode->addComponent(comGravity))
+		{
+			CC_SAFE_DELETE(comGravity);
+			return false;
+		}
+		comGravity->setDensity(100.f);
 
 		bRet = true;
 		CCLOG("Planet::init() success!");
