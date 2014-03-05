@@ -1,9 +1,11 @@
 #include "CCComGravity.h"
 #include "Box2D.h"
+#include "cocos-ext.h"
 #include "CCComRigidBody.h"
 #include "PhysicsWorld.h"
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 
 #define MIN_GRAVITY 1.0f
 
@@ -47,6 +49,9 @@ bool CCComGravity::init()
 void CCComGravity::onEnter()
 {
 	CCLOG("CCComGravity::onEnter()");
+
+	CCComAttribute* comAttribute = static_cast<CCComAttribute*>(m_pOwner->getComponent("CCComAttribute"));
+	setDensity(comAttribute->getFloat("Density", 1.0f));
 }
 
 void CCComGravity::onExit()

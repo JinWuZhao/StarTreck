@@ -87,6 +87,9 @@
     <ClCompile Include="..\Classes\CCComPlanet.cpp">
       <Filter>Classes\components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CCComNormalObjet.cpp">
+      <Filter>Classes\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -147,6 +150,9 @@
       <Filter>Classes\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CCComPlanet.h">
+      <Filter>Classes\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCComNormalObjet.h">
       <Filter>Classes\components</Filter>
     </ClInclude>
   </ItemGroup>

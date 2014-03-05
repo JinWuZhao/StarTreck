@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <SceneProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <filePath>D:\DevTools\cocos2d-x-2.2.2\projects\StarTreck\DesignResources\DesignResources.xml.scene</filePath>
+  <filePath>D:\DevTools\GameEngine\cocos2d-x-2.2.2\projects\StarTreck\DesignResources\DesignResources.xml.scene</filePath>
   <Version>1.2.0.1</Version>
   <Name>DesignResources</Name>
-  <ProjectDir>D:\DevTools\cocos2d-x-2.2.2\projects\StarTreck\DesignResources</ProjectDir>
+  <ProjectDir>D:\DevTools\GameEngine\cocos2d-x-2.2.2\projects\StarTreck\DesignResources</ProjectDir>
   <JsonFileName>DesignResources.json</JsonFileName>
-  <Resources>D:\DevTools\cocos2d-x-2.2.2\projects\StarTreck\DesignResources\Resources</Resources>
-  <JsonFolder>D:\DevTools\cocos2d-x-2.2.2\projects\StarTreck\DesignResources\Json</JsonFolder>
+  <Resources>D:\DevTools\GameEngine\cocos2d-x-2.2.2\projects\StarTreck\DesignResources\Resources</Resources>
+  <JsonFolder>D:\DevTools\GameEngine\cocos2d-x-2.2.2\projects\StarTreck\DesignResources\Json</JsonFolder>
   <JsonList />
   <CanvasSize>
     <Width>640</Width>

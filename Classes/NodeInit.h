@@ -21,6 +21,8 @@ public:
 
 	ScriptBase* createScript(int tag);
 
+	cocos2d::CCNode* getRootNode() { return m_pRootNode; }
+
 private:
 	//recursion
 	bool traverseChildren(cocos2d::CCNode* pRoot);

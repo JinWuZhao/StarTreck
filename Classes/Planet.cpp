@@ -35,10 +35,7 @@ bool Planet::init()
 			CC_SAFE_DELETE(comPlanet);
 			return false;
 		}
-		if (m_pNode->getTag() == 10200)
-		{
-			comPlanet->setCenterPlanet(m_pRootNode->getChildByTag(10100));
-		}
+
 		CCComGravity* comGravity = CCComGravity::create();
 		CC_BREAK_IF(!comGravity);
 		if (!m_pNode->addComponent(comGravity))
@@ -46,7 +43,6 @@ bool Planet::init()
 			CC_SAFE_DELETE(comGravity);
 			return false;
 		}
-		comGravity->setDensity(100.f);
 
 		bRet = true;
 		CCLOG("Planet::init() success!");

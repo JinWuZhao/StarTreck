@@ -38,6 +38,17 @@
           },
           "isShowColliderRect": true,
           "selectedactionname": "Animation1"
+        },
+        {
+          "__type": "ComPropertySurrogate:#EditorCommon.JsonModel.Component",
+          "classname": "CCComAttribute",
+          "name": "CCComAttribute",
+          "fileData": {
+            "path": "PlanetDef_10200.json",
+            "plistFile": null,
+            "resourceType": 0
+          },
+          "keyvalues": null
         }
       ]
     },
@@ -68,6 +79,17 @@
           },
           "isShowColliderRect": false,
           "selectedactionname": "Animation1"
+        },
+        {
+          "__type": "ComPropertySurrogate:#EditorCommon.JsonModel.Component",
+          "classname": "CCComAttribute",
+          "name": "CCComAttribute",
+          "fileData": {
+            "path": "PlanetDef_10100.json",
+            "plistFile": null,
+            "resourceType": 0
+          },
+          "keyvalues": null
         }
       ]
     }

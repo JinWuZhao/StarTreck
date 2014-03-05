@@ -4,6 +4,7 @@
 #include "PhysicsWorld.h"
 #include "CCComRigidBody.h"
 #include "CCComGravity.h"
+#include "NodeInit.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -58,7 +59,7 @@ void CCComPlanet::onEnter()
 	CC_ASSERT(comRender);
 	CCArmature* pArmature = static_cast<CCArmature*>(comRender->getNode());
 	CC_ASSERT(pArmature);
-	CCRect	bbox = pArmature->boundingBox();
+	CCRect bbox = pArmature->boundingBox();
 
 	//create body
 	b2BodyDef bodyDef;
@@ -66,14 +67,23 @@ void CCComPlanet::onEnter()
 	float ratio = PhysicsWorld::sharedPhysicsWorld()->getP2mRatio();
 	CCPoint pos = m_pOwner->getPosition();
 	bodyDef.position = b2Vec2(ratio*pos.x, ratio*pos.y);
-	CC_ASSERT(comRigidBody->createBody(bodyDef));
+	comRigidBody->createBody(bodyDef);
+
+	//get comAttribute and set center planet
+	CCComAttribute* comAttribute = static_cast<CCComAttribute*>(m_pOwner->getComponent("CCComAttribute"));
+	CC_ASSERT(comAttribute);
+	CCNode* rootNode = NodeInitiator::sharedNodeInitiator()->getRootNode();
+	CC_ASSERT(rootNode);
+	m_pCenterPlanet = rootNode->getChildByTag(comAttribute->getInt("CenterNodeTag", -10000));
 
 	//create fixture
 	b2CircleShape	shape;
 	shape.m_radius = bbox.size.width / 2 * ratio * m_pOwner->getScale();
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &shape;
-	CC_ASSERT(comRigidBody->createFixture(fixtureDef));
+	fixtureDef.friction = comAttribute->getFloat("Friction", 1.0f);
+	fixtureDef.restitution = comAttribute->getFloat("Restitution", 0.2f);
+	comRigidBody->createFixture(fixtureDef);
 }
 
 void CCComPlanet::onExit()

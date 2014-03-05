@@ -4,7 +4,7 @@
 #define __CCCOMGRAVITY_H__
 
 #include "cocos2d.h"
-#include <list>
+//#include <list>
 
 class CCComGravity :
 	public cocos2d::CCComponent

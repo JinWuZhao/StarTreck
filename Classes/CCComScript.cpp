@@ -1,5 +1,4 @@
 #include "CCComScript.h"
-#include "cocos2d.h"
 #include "ScriptBase.h"
 
 USING_NS_CC;
