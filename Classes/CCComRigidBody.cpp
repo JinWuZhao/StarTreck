@@ -5,7 +5,7 @@ USING_NS_CC;
 
 CCComRigidBody::CCComRigidBody( void )
 	: CCComponent(),
-	m_pBody(NULL), m_bBackup(false)
+	m_pBody(NULL), m_bIsDynamic(false)
 {
 }
 
@@ -51,11 +51,11 @@ void CCComRigidBody::onExit()
 	{
 		if (m_pBody)
 		{
-			if (m_bBackup)
+			if (m_bIsDynamic)
 			{
-				PhysicsWorld::sharedPhysicsWorld()->removeFromBackupList(m_pBody);
+				PhysicsWorld::sharedPhysicsWorld()->removeFromDynamicList(m_pBody);
 			}
-			PhysicsWorld::sharedPhysicsWorld()->getB2World()->DestroyBody(m_pBody);
+			PhysicsWorld::sharedPhysicsWorld()->collectBody(m_pBody);
 		}
 	}
 	m_pBody = NULL;
@@ -77,12 +77,12 @@ b2Body* CCComRigidBody::createBody(const b2BodyDef& bodyDef, bool bBackup)
 {
 	if (!m_pBody)
 	{
-		m_pBody = PhysicsWorld::sharedPhysicsWorld()->getB2World()->CreateBody(&bodyDef);
+		m_pBody = PhysicsWorld::sharedPhysicsWorld()->getNewBody(bodyDef);
 		m_pBody->SetUserData((void*)m_pOwner);
 		if (bBackup)
 		{
-			m_bBackup = true;
-			PhysicsWorld::sharedPhysicsWorld()->addToBackupList(m_pBody);
+			m_bIsDynamic = true;
+			PhysicsWorld::sharedPhysicsWorld()->addToDynamicList(m_pBody);
 		}
 	}
 	return m_pBody;

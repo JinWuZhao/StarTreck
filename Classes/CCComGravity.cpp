@@ -68,7 +68,7 @@ void CCComGravity::update(float delta)
 	CC_ASSERT(pOwnerBody);
 
 	std::list<b2Body*> bodyList;
-	PhysicsWorld::sharedPhysicsWorld()->getBackupList(bodyList);
+	PhysicsWorld::sharedPhysicsWorld()->getDynamicList(bodyList);
 	//遍历列表中的body，对范围内的目标施加引力
 	std::list<b2Body*>::iterator bodyIt;
 	for (bodyIt = bodyList.begin(); bodyIt != bodyList.end(); bodyIt++)

@@ -32,7 +32,7 @@ public:
 	void applyTorque(float torque);
 
 	CC_SYNTHESIZE_READONLY(b2Body*, m_pBody, Body);
-	CC_SYNTHESIZE_READONLY(bool, m_bBackup, Backup);
+	CC_SYNTHESIZE_READONLY(bool, m_bIsDynamic, IsDynamic);
 };
 
 #endif

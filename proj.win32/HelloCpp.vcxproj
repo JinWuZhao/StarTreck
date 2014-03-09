@@ -150,6 +150,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\Planet.cpp" />
     <ClCompile Include="..\Classes\ScriptBase.cpp" />
     <ClCompile Include="..\Classes\SplashScreen.cpp" />
+    <ClCompile Include="..\Classes\StageManager.cpp" />
     <ClCompile Include="..\Classes\VisibleRect.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -173,6 +174,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\Planet.h" />
     <ClInclude Include="..\Classes\ScriptBase.h" />
     <ClInclude Include="..\Classes\SplashScreen.h" />
+    <ClInclude Include="..\Classes\StageManager.h" />
     <ClInclude Include="..\Classes\VisibleRect.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

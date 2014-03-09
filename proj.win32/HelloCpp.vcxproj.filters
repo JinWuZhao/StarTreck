@@ -90,6 +90,7 @@
     <ClCompile Include="..\Classes\CCComNormalObjet.cpp">
       <Filter>Classes\components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StageManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -155,5 +156,6 @@
     <ClInclude Include="..\Classes\CCComNormalObjet.h">
       <Filter>Classes\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\StageManager.h" />
   </ItemGroup>
 </Project>

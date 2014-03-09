@@ -10,7 +10,8 @@ PhysicsWorld::PhysicsWorld( void )
 	m_nPTM_RATIO(5.f),
 	m_nMTP_RATIO(1.f/m_nPTM_RATIO),
 	m_bIsActive(false), 
-	m_nGConst(0.1f)
+	m_nGConst(0.1f),
+	m_nMaxBodyNum(50)
 {
 
 }
@@ -37,6 +38,16 @@ bool PhysicsWorld::init()
 		return false;
 	}
 	m_bIsActive = true;
+
+	for (int i = 0; i < m_nMaxBodyNum; i++)
+	{
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.active = false;
+		b2Body* pBody = m_pB2World->CreateBody(&bodyDef);
+		m_BackupBodyList.push_back(pBody);
+	}
+
 	return true;
 }
 
@@ -50,24 +61,63 @@ void PhysicsWorld::update( float dt )
 void PhysicsWorld::end()
 {
 	m_bIsActive = false;
-	m_BodyList.clear();
+	m_DynamicBodyList.clear();
+	m_BackupBodyList.clear();
 	CC_SAFE_DELETE(m_pB2World);
 }
 
-void PhysicsWorld::addToBackupList(b2Body* pBody)
+void PhysicsWorld::addToDynamicList(b2Body* pBody)
 {
 	if (pBody->GetType() == b2_dynamicBody)
 	{
-		m_BodyList.push_back(pBody);
+		m_DynamicBodyList.push_back(pBody);
 	}
 }
 
-void PhysicsWorld::getBackupList(std::list<b2Body*>& bodyList)
+void PhysicsWorld::getDynamicList(std::list<b2Body*>& bodyList)
 {
-	bodyList = m_BodyList;
+	bodyList = m_DynamicBodyList;
 }
 
-void PhysicsWorld::removeFromBackupList(b2Body* pBody)
+void PhysicsWorld::removeFromDynamicList(b2Body* pBody)
 {
-	m_BodyList.remove(pBody);
+	m_DynamicBodyList.remove(pBody);
+}
+
+int PhysicsWorld::getBackupBodyCount()
+{
+	return m_BackupBodyList.size();
+}
+
+b2Body* PhysicsWorld::getNewBody(const b2BodyDef& def)
+{
+	if (m_BackupBodyList.size())
+	{
+		b2Body* pNewBody = m_BackupBodyList.front();
+		m_BackupBodyList.pop_front();
+
+		pNewBody->SetAngularVelocity(def.angularVelocity);
+		pNewBody->SetLinearVelocity(def.linearVelocity);
+		pNewBody->SetTransform(def.position,def.angle);
+		pNewBody->SetType(def.type);
+		pNewBody->SetUserData(def.userData);
+		pNewBody->SetActive(def.active);
+
+		return pNewBody;
+	}
+	return NULL;
+}
+
+void PhysicsWorld::collectBody(b2Body* pOldBody)
+{
+	if (pOldBody)
+	{
+		pOldBody->SetActive(false);
+		b2Fixture* fixtureList = pOldBody->GetFixtureList();
+		for (; fixtureList->GetNext() != NULL; fixtureList = fixtureList->GetNext())
+		{
+			pOldBody->DestroyFixture(fixtureList);
+		}
+		m_BackupBodyList.push_back(pOldBody);
+	}
 }
