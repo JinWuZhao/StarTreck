@@ -4,6 +4,7 @@
 #include "NodeInit.h"
 #include "PhysicsWorld.h"
 #include "DebugLayer.h"
+#include "StageManager.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -27,12 +28,17 @@ void GameScene::onEnter()
 		DebugLayer* debugLayer = DebugLayer::create();
 		CC_BREAK_IF(!debugLayer);
 		addChild(debugLayer, DEBUGLAYER_Z_ORDER);
+		//debugLayer->setVertexZ(1);
 
 		//load scenenodes
-		CCNode* pSceneRoot = SceneReader::sharedSceneReader()->createNodeWithSceneFile("DesignResources.json");
+		StageManager* stageMgr = StageManager::sharedStageManager();
+		std::vector<StageInfo> stageData;
+		CC_BREAK_IF(!stageMgr->readStageData(stageData));
+		CCNode* pSceneRoot = stageMgr->loadStage(stageData[0].name);
 		CC_BREAK_IF(!pSceneRoot);
 		addChild(pSceneRoot, ACTOR_Z_ORDER);
 
+		//init nodes
 		CC_BREAK_IF(!NodeInitiator::sharedNodeInitiator()->initAllNodes(pSceneRoot));
 
 	} while (0);

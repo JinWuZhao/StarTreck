@@ -1,1 +1,7 @@
-{ "Tag":10200 , "Density":100 , "Friction":1 , "Restitution":0.2 , "CenterNodeTag":10100 }
+{ 
+	"Tag":10200 , 
+	"Density":100 , 
+	"Friction":1 , 
+	"Restitution":0.2 , 
+	"CenterNodeTag":10100 
+}

@@ -24,29 +24,29 @@ StageManager* StageManager::sharedStageManager()
 	return _sharedStageManager;
 }
 
-bool StageManager::loadStage(void)
+cocos2d::CCNode* StageManager::loadStage(const std::string& name)
+{
+	CCNode* ret = NULL;
+	ret = SceneReader::sharedSceneReader()->createNodeWithSceneFile(name.c_str());
+	if (!ret)
+	{
+		CCLOG("Failed to create scene:%s.", name.c_str());
+	}
+	return ret;
+}
+
+bool StageManager::readStageData(std::vector<StageInfo>& stageData)
 {
 	bool ret = false;
-	do 
+	do
 	{
 		rapidjson::Document stageDoc;
-		CC_BREAK_IF(readStageConfig("StageDef.json", stageDoc));
-		CC_BREAK_IF(createPrefabsWithDoc(stageDoc));
+		CC_BREAK_IF(!readStageConfig("StageDef.json", stageDoc));
+		CC_BREAK_IF(!parseStageData(stageDoc, stageData));
 		ret = true;
 	} while (0);
 
 	return ret;
-}
-
-CCNode* StageManager::getPrefabWithLevel(int level)
-{
-
-	return NULL;
-}
-
-void StageManager::clearStage(void)
-{
-	m_PrefabMap.clear();
 }
 
 bool StageManager::readStageConfig(const char* fileName, rapidjson::Document& parsedDoc)
@@ -74,35 +74,38 @@ bool StageManager::readStageConfig(const char* fileName, rapidjson::Document& pa
 	return ret;
 }
 
-bool StageManager::createPrefabsWithDoc(rapidjson::Value& parsedDoc)
+bool StageManager::parseStageData(rapidjson::Value& parsedDoc, std::vector<StageInfo>& data)
 {
+	data.clear();
 	bool ret = false;
 	do 
 	{
-		CC_BREAK_IF(!DICTOOL->checkObjectExist_json(parsedDoc, "Prefabs"));
-		int prefabSize = DICTOOL->getArrayCount_json(parsedDoc, "Prefabs");
-		CC_BREAK_IF(prefabSize <= 0);
+		CC_BREAK_IF(!DICTOOL->checkObjectExist_json(parsedDoc, "Stages"));
+		int stageNum = DICTOOL->getArrayCount_json(parsedDoc, "Stages");
+		CC_BREAK_IF(stageNum <= 0);
 		int i = 0;
 		do 
 		{
-			const rapidjson::Value& prefabDef = DICTOOL->getDictionaryFromArray_json(parsedDoc, "Prefabs", i);
-			int prefabLevel = DICTOOL->getIntValue_json(prefabDef, "Level", -1);
-			CC_BREAK_IF(prefabLevel < 0);
-			std::string prefabName = DICTOOL->getStringValue_json(prefabDef, "Name");
-			CC_BREAK_IF(prefabName.size() == 0);
-			//load scenenodes
-			CCNode* prefabNode = SceneReader::sharedSceneReader()->createNodeWithSceneFile(prefabName.c_str());
-			CC_BREAK_IF(!prefabNode);
-			m_PrefabMap.insert(std::pair<int, CCNode*>(prefabLevel, prefabNode));
-			CCLOG("Create Prefab:%s successfully.", prefabName.c_str());
-		} while (i < prefabSize);
+			const rapidjson::Value& stageDict = DICTOOL->getDictionaryFromArray_json(parsedDoc, "Stages", i);
+			int level = DICTOOL->getIntValue_json(stageDict, "Level", -1);
+			CC_BREAK_IF(level < 0);
+			std::string name = DICTOOL->getStringValue_json(stageDict, "Name");
+			CC_BREAK_IF(name.size() == 0);
+			StageInfo info;
+			info.level = level;
+			info.name = name;
+			data.push_back(info);
+			CCLOG("Parse Stage:%s successfully.", name.c_str());
+			i++;
+		} while (i < stageNum);
+		CC_BREAK_IF(i < stageNum);
 		ret = true;
 	} while (0);
 
 	if (!ret)
 	{
-		CCLOG("Create Prefabs failed.");
-		m_PrefabMap.clear();
+		CCLOG("Failed to parse stage data.");
+		data.clear();
 	}
 
 	return ret;

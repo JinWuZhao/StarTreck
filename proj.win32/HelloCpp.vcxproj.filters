@@ -90,7 +90,9 @@
     <ClCompile Include="..\Classes\CCComNormalObjet.cpp">
       <Filter>Classes\components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\StageManager.cpp" />
+    <ClCompile Include="..\Classes\StageManager.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -156,6 +158,8 @@
     <ClInclude Include="..\Classes\CCComNormalObjet.h">
       <Filter>Classes\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\StageManager.h" />
+    <ClInclude Include="..\Classes\StageManager.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -54,6 +54,12 @@ bool NodeInitiator::initAllNodes( cocos2d::CCNode* pRoot )
 		CC_BREAK_IF(!traverseChildren(pRoot));
 		bRet = true;
 	} while (0);
+
+	if (!bRet)
+	{
+		CCLOG("Failed to init nodes.");
+	}
+
 	return bRet;
 }
 
@@ -111,6 +117,7 @@ bool NodeInitiator::traverseChildren( cocos2d::CCNode* pRoot )
 			}
 			if (!traverseChildren(static_cast<CCNode*>(pNode)))
 			{
+				CCLOG("Failed to init node:%d.", ((CCNode*)pNode)->getTag());
 				continue;
 			}
 		}

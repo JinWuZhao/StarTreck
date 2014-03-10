@@ -3,7 +3,12 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include <map>
+
+struct StageInfo
+{
+	int level;
+	std::string name;
+};
 
 class StageManager :
 	public cocos2d::CCObject
@@ -16,23 +21,17 @@ public:
 	static StageManager* sharedStageManager();
 
 	//载入关卡
-	bool loadStage(void);
+	cocos2d::CCNode* loadStage(const std::string& name);
 
-	//根据等级随机获取一个关卡节点prefab
-	cocos2d::CCNode* getPrefabWithLevel(int level);
-
-	//清除关卡数据
-	void clearStage(void);
+	//读取关卡数据
+	bool readStageData(std::vector<StageInfo>& stageData);
 
 private:
 	//读取并解析关卡文件
 	bool readStageConfig(const char* fileName, rapidjson::Document& parsedDoc);
 
-	//根据解析的文档创建节点，该节点作为关卡中的prefab使用
-	bool createPrefabsWithDoc(rapidjson::Value& parsedDoc);
-
-	//保存prefab节点的map
-	std::multimap<int, cocos2d::CCNode* >		m_PrefabMap;
+	//分析关卡数据
+	bool parseStageData(rapidjson::Value& parsedDoc, std::vector<StageInfo>& data);
 };
 
 #endif
