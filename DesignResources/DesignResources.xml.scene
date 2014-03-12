@@ -9,8 +9,8 @@
   <JsonFolder>D:\DevTools\GameEngine\cocos2d-x-2.2.2\projects\StarTreck\DesignResources\Json</JsonFolder>
   <JsonList />
   <CanvasSize>
-    <Width>640</Width>
-    <Height>960</Height>
+    <Width>1280</Width>
+    <Height>1920</Height>
   </CanvasSize>
   <JSFileList />
   <DefaultUI_JSList />

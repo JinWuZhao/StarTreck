@@ -93,6 +93,9 @@
     <ClCompile Include="..\Classes\StageManager.cpp">
       <Filter>Classes\utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Camera.cpp">
+      <Filter>Classes\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -160,6 +163,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StageManager.h">
       <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Camera.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScriptDefine.h">
+      <Filter>Classes\scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

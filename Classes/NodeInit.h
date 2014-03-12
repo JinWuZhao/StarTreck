@@ -19,8 +19,6 @@ public:
 
 	bool initNodeWithScript(cocos2d::CCNode* pNode, ScriptBase* pScript);
 
-	ScriptBase* createScript(int tag);
-
 	cocos2d::CCNode* getRootNode() { return m_pRootNode; }
 
 private:

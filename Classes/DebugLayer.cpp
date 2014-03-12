@@ -3,6 +3,8 @@
 #include "NodeInit.h"
 #include "PhysicsWorld.h"
 #include "GLES-Render.h"
+#include "Camera.h"
+#include "VisibleRect.h"
 
 USING_NS_CC;
 
@@ -44,7 +46,9 @@ void DebugLayer::draw()
 			if (pShape->GetType() == b2Shape::e_circle)
 			{
 				float radius = static_cast<b2CircleShape*>(pShape)->m_radius;
-				m_pDebugDraw->DrawCircle(pos, radius, b2Color(255, 0, 0));
+				CCPoint viewPos = Camera::sharedCamera()->getPosition();
+				CCPoint presentPos = (VisibleRect::center() - viewPos)*(PhysicsWorld::sharedPhysicsWorld()->getP2mRatio()) + ccp(pos.x, pos.y);
+				m_pDebugDraw->DrawCircle(b2Vec2(presentPos.x, presentPos.y), radius, b2Color(255, 0, 0));
 			}
 		}
 		pBodyList = pBodyList->GetNext();

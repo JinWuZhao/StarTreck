@@ -31,6 +31,8 @@ public:
 
 	void applyTorque(float torque);
 
+	cocos2d::CCPoint getVelocity(void);
+
 	CC_SYNTHESIZE_READONLY(b2Body*, m_pBody, Body);
 	CC_SYNTHESIZE_READONLY(bool, m_bIsDynamic, IsDynamic);
 };

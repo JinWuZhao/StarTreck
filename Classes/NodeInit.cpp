@@ -1,6 +1,7 @@
 #include "NodeInit.h"
 #include "ScriptBase.h"
 #include "CCComScript.h"
+#include "ScriptDefine.h"
 
 USING_NS_CC;
 
@@ -63,39 +64,6 @@ bool NodeInitiator::initAllNodes( cocos2d::CCNode* pRoot )
 	return bRet;
 }
 
-//////////////////////////////////////////////////////////////////////////
-//include
-#include "Actor.h"
-#include "Planet.h"
-//////////////////////////////////////////////////////////////////////////
-//id
-#define ID_FILTER 100
-#define ID_EARTH 101
-#define ID_MOON 102
-//////////////////////////////////////////////////////////////////////////
-
-ScriptBase* NodeInitiator::createScript( int tag )
-{
-	ScriptBase* pScript = NULL;
-	switch(tag/ID_FILTER)
-	{
-		//////////////////////////////////////////////////////////////////////////
-		//create
-	case ID_EARTH:
-		pScript = new Planet();
-		break;
-	case ID_MOON:
-		pScript = new Planet();
-		break;
-		//////////////////////////////////////////////////////////////////////////
-	}
-	if (pScript)
-	{
-		pScript->setRootNode(m_pRootNode);
-	}
-	return pScript;
-}
-
 bool NodeInitiator::traverseChildren( cocos2d::CCNode* pRoot )
 {
 	bool bRet = false;
@@ -105,11 +73,12 @@ bool NodeInitiator::traverseChildren( cocos2d::CCNode* pRoot )
 		CCObject* pNode = NULL;
 		CCARRAY_FOREACH(pRoot->getChildren(), pNode)
 		{
-			ScriptBase* pScript = createScript(static_cast<CCNode*>(pNode)->getTag());
+			ScriptBase* pScript = _createScript(static_cast<CCNode*>(pNode)->getTag());
 			if (!pScript)
 			{
 				continue;
 			}
+			pScript->setRootNode(m_pRootNode);
 			if (!initNodeWithScript(static_cast<CCNode*>(pNode), pScript))
 			{
 				CC_SAFE_DELETE(pScript);

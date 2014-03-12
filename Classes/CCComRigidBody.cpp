@@ -118,3 +118,9 @@ void CCComRigidBody::applyTorque( float torque )
 {
 	m_pBody->ApplyTorque(torque);
 }
+
+cocos2d::CCPoint CCComRigidBody::getVelocity(void)
+{
+	b2Vec2 velocity = m_pBody->GetLinearVelocity();
+	return ccp(velocity.x, velocity.y)*(PhysicsWorld::sharedPhysicsWorld()->getM2pRatio());
+}

@@ -5,6 +5,7 @@
 #include "PhysicsWorld.h"
 #include "DebugLayer.h"
 #include "StageManager.h"
+#include "Camera.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -41,6 +42,11 @@ void GameScene::onEnter()
 		//init nodes
 		CC_BREAK_IF(!NodeInitiator::sharedNodeInitiator()->initAllNodes(pSceneRoot));
 
+		Camera* camera = Camera::sharedCamera();
+		camera->setRootNode(pSceneRoot);
+		camera->setFollowObjet(pSceneRoot->getChildByTag(10200));
+		camera->setBoundingBox(CCSizeMake(200,200));
+
 	} while (0);
 
 }
@@ -51,11 +57,13 @@ void GameScene::onExit()
 	CCLOG("------------------GameScene::onExit()-----------------");
 	unscheduleUpdate();
 	
+	Camera::sharedCamera()->reset();
 	PhysicsWorld::sharedPhysicsWorld()->end();
 }
 
 void GameScene::update( float dt )
 {
+	Camera::sharedCamera()->update(dt);
 	PhysicsWorld::sharedPhysicsWorld()->update(dt);
 }
 

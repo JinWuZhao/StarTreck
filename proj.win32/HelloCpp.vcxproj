@@ -133,6 +133,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   <ItemGroup>
     <ClCompile Include="..\Classes\Actor.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Camera.cpp" />
     <ClCompile Include="..\Classes\CCComGravity.cpp" />
     <ClCompile Include="..\Classes\CCComNormalObjet.cpp" />
     <ClCompile Include="..\Classes\CCComPlanet.cpp" />
@@ -157,6 +158,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   <ItemGroup>
     <ClInclude Include="..\Classes\Actor.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Camera.h" />
     <ClInclude Include="..\Classes\CCComGravity.h" />
     <ClInclude Include="..\Classes\CCComNormalObjet.h" />
     <ClInclude Include="..\Classes\CCComPlanet.h" />
@@ -173,6 +175,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\Plane.h" />
     <ClInclude Include="..\Classes\Planet.h" />
     <ClInclude Include="..\Classes\ScriptBase.h" />
+    <ClInclude Include="..\Classes\ScriptDefine.h" />
     <ClInclude Include="..\Classes\SplashScreen.h" />
     <ClInclude Include="..\Classes\StageManager.h" />
     <ClInclude Include="..\Classes\VisibleRect.h" />

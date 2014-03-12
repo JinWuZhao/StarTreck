@@ -21,8 +21,8 @@
       "scalex": 0.5,
       "scaley": 0.5,
       "visible": 1,
-      "x": 322.00003051757812,
-      "y": 207.66668701171875,
+      "x": 594.99993896484375,
+      "y": 373.97415161132812,
       "zorder": 1,
       "gameobjects": [],
       "components": [
@@ -59,11 +59,11 @@
       "canedit": true,
       "objecttag": 10100,
       "rotation": 0,
-      "scalex": 2,
-      "scaley": 2,
+      "scalex": 10,
+      "scaley": 10,
       "visible": 1,
-      "x": 283.33331298828125,
-      "y": 341.66668701171875,
+      "x": 648.71771240234375,
+      "y": 899.35858154296875,
       "zorder": 1,
       "gameobjects": [],
       "components": [
@@ -95,8 +95,8 @@
     }
   ],
   "CanvasSize": {
-    "_height": 960,
-    "_width": 640
+    "_height": 1920,
+    "_width": 1280
   },
   "Triggers": [],
   "Version": "1.2.0.1",
