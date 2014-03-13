@@ -25,6 +25,9 @@
     <Filter Include="Classes\utils">
       <UniqueIdentifier>{5ae50361-5a69-439d-83ff-e001565ca584}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\scripts\helpers">
+      <UniqueIdentifier>{d167f489-8398-4f43-91bf-ba06292870eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Camera.cpp">
       <Filter>Classes\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCComCamera.cpp">
+      <Filter>Classes\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CameraActor.cpp">
+      <Filter>Classes\scripts\actors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ScriptDefine.h">
       <Filter>Classes\scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCComCamera.h">
+      <Filter>Classes\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CameraActor.h">
+      <Filter>Classes\scripts\actors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

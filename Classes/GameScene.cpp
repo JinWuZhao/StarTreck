@@ -39,13 +39,13 @@ void GameScene::onEnter()
 		CC_BREAK_IF(!pSceneRoot);
 		addChild(pSceneRoot, ACTOR_Z_ORDER);
 
+		//camera
+		CCNode* pCameraActor = CCNode::create();
+		pCameraActor->setTag(99900);
+		pSceneRoot->addChild(pCameraActor);
+
 		//init nodes
 		CC_BREAK_IF(!NodeInitiator::sharedNodeInitiator()->initAllNodes(pSceneRoot));
-
-		Camera* camera = Camera::sharedCamera();
-		camera->setRootNode(pSceneRoot);
-		camera->setFollowObjet(pSceneRoot->getChildByTag(10200));
-		camera->setBoundingBox(CCSizeMake(200,200));
 
 	} while (0);
 
@@ -57,13 +57,11 @@ void GameScene::onExit()
 	CCLOG("------------------GameScene::onExit()-----------------");
 	unscheduleUpdate();
 	
-	Camera::sharedCamera()->reset();
 	PhysicsWorld::sharedPhysicsWorld()->end();
 }
 
 void GameScene::update( float dt )
 {
-	Camera::sharedCamera()->update(dt);
 	PhysicsWorld::sharedPhysicsWorld()->update(dt);
 }
 

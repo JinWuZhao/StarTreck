@@ -121,10 +121,7 @@ void CCComPlanet::update(float delta)
 		b2Vec2 disVec = pCenterBody->GetPosition() - pOwnerBody->GetPosition();
 		float FGScalar = ownerMass * centerMass / disVec.LengthSquared() * PhysicsWorld::sharedPhysicsWorld()->getGConst();
 		disVec.Normalize();
-		b2Vec2 FG(FGScalar / disVec.x, FGScalar / disVec.y);
-		float FGAScalar = FG.Length() / ownerMass;
-		FG.Normalize();
-		b2Vec2 accelSpeed = FGAScalar * FG;
+		b2Vec2 accelSpeed = b2Vec2(FGScalar * disVec.x / ownerMass, FGScalar * disVec.y / ownerMass);
 
 		disVec = pCenterBody->GetPosition() - pOwnerBody->GetPosition();
 

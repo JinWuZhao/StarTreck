@@ -24,7 +24,7 @@ bool Actor::init()
 		if (!m_pNode->addComponent(comRigidBody))
 		{
 			CC_SAFE_DELETE(comRigidBody);
-			break;
+			return false;
 		}
 		bRet = true;
 		//CCLOG("Actor::init() success!");

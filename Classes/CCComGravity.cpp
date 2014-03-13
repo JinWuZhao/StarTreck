@@ -57,7 +57,6 @@ void CCComGravity::onEnter()
 void CCComGravity::onExit()
 {
 	CCLOG("CCComGravity::onExit()");
-	//m_AttractedBodies.clear();
 }
 
 void CCComGravity::update(float delta)

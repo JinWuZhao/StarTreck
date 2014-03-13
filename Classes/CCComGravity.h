@@ -31,7 +31,6 @@ public:
 	CC_SYNTHESIZE_READONLY(float, m_nMass, Mass);
 
 private:
-	//std::list<b2Body*>		m_AttractedBodies; //受引力影响的body
 };
 
 #endif

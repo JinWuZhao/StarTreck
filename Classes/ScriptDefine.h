@@ -6,11 +6,13 @@
 #include "ScriptBase.h"
 
 #include "Actor.h"
+#include "CameraActor.h"
 #include "Planet.h"
 //////////////////////////////////////////////////////////////////////////
 //id
 #define ID_FILTER 100
 
+#define ID_CAMERA 999
 #define ID_EARTH 101
 #define ID_MOON 102
 //////////////////////////////////////////////////////////////////////////
@@ -22,6 +24,9 @@ static ScriptBase* _createScript(int tag)
 	{
 		//////////////////////////////////////////////////////////////////////////
 		//create
+	case ID_CAMERA:
+		pScript = new CameraActor();
+		break;
 	case ID_EARTH:
 		pScript = new Planet();
 		break;

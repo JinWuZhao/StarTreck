@@ -1,6 +1,5 @@
 #include "Camera.h"
 #include "VisibleRect.h"
-#include "CCComRigidBody.h"
 #include "PhysicsWorld.h"
 
 USING_NS_CC;
@@ -106,20 +105,35 @@ void Camera::update(float delta)
 		CC_ASSERT(m_BoundingBox.size.height > 0 && m_BoundingBox.size.width > 0);
 		m_BoundingBox.origin = getPosition()-ccp(m_BoundingBox.size.width/2,m_BoundingBox.size.height/2);
 
-		CCComRigidBody* comRigidBody = static_cast<CCComRigidBody*>(m_pCenterNode->getComponent("CCComRigidBody"));
-		CC_ASSERT(comRigidBody);
-		CCPoint velocity = comRigidBody->getVelocity();
-
 		if (!m_BoundingBox.containsPoint(centerPos))
 		{
 			if (IsMoving())
 			{
 				m_pRootNode->stopActionByTag(ACTIONTAG_CAMERAMOVING);
 			}
-			CCPoint displacement = velocity*delta;
+
+			CCPoint displacement = CCPointZero;
+
+			if (centerPos.x < m_BoundingBox.getMinX())
+			{
+				displacement.x = centerPos.x - m_BoundingBox.getMinX();
+			}
+			if (centerPos.x > m_BoundingBox.getMaxX())
+			{
+				displacement.x = centerPos.x - m_BoundingBox.getMaxX();
+			}
+			if (centerPos.y < m_BoundingBox.getMinY())
+			{
+				displacement.y = centerPos.y - m_BoundingBox.getMinY();
+			}
+			if (centerPos.y > m_BoundingBox.getMaxY())
+			{
+				displacement.y = centerPos.y - m_BoundingBox.getMaxY();
+			}
+
 			setPosition(getPosition() + displacement);
 		}
-		else if (velocity.equals(CCPointZero) && centerPos.fuzzyEquals(centerPos,1.0f))
+		else if (!centerPos.fuzzyEquals(centerPos,1.0f))
 		{
 			if (!IsMoving())
 			{
@@ -144,7 +158,6 @@ void Camera::reset(void)
 	CC_SAFE_RELEASE_NULL(m_pCenterNode);
 	CC_SAFE_RELEASE_NULL(m_pRootNode);
 	m_BoundingBox = CCRectZero;
-
 }
 
 bool Camera::IsMoving(void)
