@@ -1,10 +1,9 @@
 #include "Camera.h"
 #include "VisibleRect.h"
 #include "PhysicsWorld.h"
+#include "GlobalDefine.h"
 
 USING_NS_CC;
-
-#define ACTIONTAG_CAMERAMOVING 90000
 
 static Camera* _sharedCamera = NULL;
 
@@ -37,7 +36,6 @@ void Camera::setRootNode(cocos2d::CCNode* root)
 	m_pRootNode = root;
 	if (m_pRootNode)
 	{
-		m_pRootNode->retain();
 		m_pRootNode->setPosition(VisibleRect::center());
 	}
 }
@@ -46,7 +44,6 @@ void Camera::setFollowObjet(cocos2d::CCNode* center)
 {
 	CC_ASSERT(center && center->getParent() == m_pRootNode && !m_pCenterNode);
 	m_pCenterNode = center;
-	m_pCenterNode->retain();
 	setPosition(m_pCenterNode->getPosition());
 }
 
@@ -72,13 +69,13 @@ void Camera::moveTo(float x, float y, bool smoothly /*= true*/)
 			bezierCfg.controlPoint_2 = ccp(4.f,0.f);
 			bezierCfg.endPosition = VisibleRect::center() - ccp(x, y);
 			CCBezierTo* bezierToAction = CCBezierTo::create(duration, bezierCfg);
-			bezierToAction->setTag(ACTIONTAG_CAMERAMOVING);
+			bezierToAction->setTag(TAG_CAMERAMOVINGACTION);
 			m_pRootNode->runAction(bezierToAction);
 		}
 		else
 		{
 			CCMoveTo* moveToAction = CCMoveTo::create(duration, VisibleRect::center() - ccp(x, y));
-			moveToAction->setTag(ACTIONTAG_CAMERAMOVING);
+			moveToAction->setTag(TAG_CAMERAMOVINGACTION);
 			m_pRootNode->runAction(moveToAction);
 		}
 	}
@@ -109,7 +106,7 @@ void Camera::update(float delta)
 		{
 			if (IsMoving())
 			{
-				m_pRootNode->stopActionByTag(ACTIONTAG_CAMERAMOVING);
+				m_pRootNode->stopActionByTag(TAG_CAMERAMOVINGACTION);
 			}
 
 			CCPoint displacement = CCPointZero;
@@ -153,10 +150,10 @@ void Camera::reset(void)
 {
 	m_bIsFollowOpen = true;
 	m_nMoveSpeed = 10.f;
-	m_pRootNode->stopActionByTag(ACTIONTAG_CAMERAMOVING);
+	m_pRootNode->stopActionByTag(TAG_CAMERAMOVINGACTION);
 	setPosition(CCPointZero);
-	CC_SAFE_RELEASE_NULL(m_pCenterNode);
-	CC_SAFE_RELEASE_NULL(m_pRootNode);
+	m_pCenterNode = NULL;
+	m_pRootNode = NULL;
 	m_BoundingBox = CCRectZero;
 }
 

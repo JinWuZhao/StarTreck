@@ -1,4 +1,4 @@
-#include "CCComPlanet.h"
+#include "CCComCelestialBody.h"
 #include "Box2D.h"
 #include "cocos-ext.h"
 #include "PhysicsWorld.h"
@@ -9,20 +9,21 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-CCComPlanet::CCComPlanet()
+CCComCelestialBody::CCComCelestialBody()
 : CCComponent(),
-m_pCenterPlanet(NULL)
+m_pCenterPlanet(NULL),
+m_eType(E_PLANET)
 {
 }
 
 
-CCComPlanet::~CCComPlanet()
+CCComCelestialBody::~CCComCelestialBody()
 {
 }
 
-CCComPlanet* CCComPlanet::create(void)
+CCComCelestialBody* CCComCelestialBody::create(void)
 {
-	CCComPlanet * pRet = new CCComPlanet();
+	CCComCelestialBody * pRet = new CCComCelestialBody();
 	if (pRet != NULL && pRet->init())
 	{
 		pRet->autorelease();
@@ -34,21 +35,21 @@ CCComPlanet* CCComPlanet::create(void)
 	return pRet;
 }
 
-bool CCComPlanet::init()
+bool CCComCelestialBody::init()
 {
 	bool bRet = false;
 	do
 	{
 		CC_BREAK_IF(!CCComponent::init());
-		setName("CCComPlanet");
+		setName("CCComCelestialBody");
 		bRet = true;
 	} while (0);
 	return bRet;
 }
 
-void CCComPlanet::onEnter()
+void CCComCelestialBody::onEnter()
 {
-	CCLOG("CCComPlanet::onEnter()");
+	CCLOG("CCComCelestialBody::onEnter()");
 
 	//get comRigidbody
 	CCComRigidBody* comRigidBody = static_cast<CCComRigidBody*>(m_pOwner->getComponent("CCComRigidBody"));
@@ -63,7 +64,14 @@ void CCComPlanet::onEnter()
 
 	//create body
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_kinematicBody;
+	if (m_eType == E_PLANET)
+	{
+		bodyDef.type = b2_kinematicBody;
+	}
+	else
+	{
+		bodyDef.type = b2_dynamicBody;
+	}
 	float ratio = PhysicsWorld::sharedPhysicsWorld()->getP2mRatio();
 	CCPoint pos = m_pOwner->getPosition();
 	bodyDef.position = b2Vec2(ratio*pos.x, ratio*pos.y);
@@ -83,15 +91,16 @@ void CCComPlanet::onEnter()
 	fixtureDef.shape = &shape;
 	fixtureDef.friction = comAttribute->getFloat("Friction", 1.0f);
 	fixtureDef.restitution = comAttribute->getFloat("Restitution", 0.2f);
+	fixtureDef.density = comAttribute->getFloat("Density", 1.0f);
 	comRigidBody->createFixture(fixtureDef);
 }
 
-void CCComPlanet::onExit()
+void CCComCelestialBody::onExit()
 {
-	CCLOG("CCComPlanet::onExit()");
+	CCLOG("CCComCelestialBody::onExit()");
 }
 
-void CCComPlanet::update(float delta)
+void CCComCelestialBody::update(float delta)
 {
 	//使该星球围绕中心星球公转
 
@@ -108,14 +117,25 @@ void CCComPlanet::update(float delta)
 		b2Body* pCenterBody = comRigidBody->getBody();
 		CC_ASSERT(pCenterBody);
 
-		//get CCComGravity
-		CCComGravity* comGravity = static_cast<CCComGravity*>(m_pOwner->getComponent("CCComGravity"));
-		CC_ASSERT(comGravity);
-		float ownerMass = comGravity->getMass();
-		comGravity = NULL;
+		float ownerMass = 0.f;
+		float centerMass = 0.f;
+		CCComGravity* comGravity = NULL;
+		if (m_eType == E_PLANET)
+		{
+			//get CCComGravity
+			comGravity = static_cast<CCComGravity*>(m_pOwner->getComponent("CCComGravity"));
+			CC_ASSERT(comGravity);
+			ownerMass = comGravity->getMass();
+			comGravity = NULL;
+
+		}
+		else
+		{
+			ownerMass = pOwnerBody->GetMass();
+		}
 		comGravity = static_cast<CCComGravity*>(m_pCenterPlanet->getComponent("CCComGravity"));
 		CC_ASSERT(comGravity);
-		float centerMass = comGravity->getMass();
+		centerMass = comGravity->getMass();
 
 		//Compute the accelerated speed
 		b2Vec2 disVec = pCenterBody->GetPosition() - pOwnerBody->GetPosition();

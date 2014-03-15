@@ -17,6 +17,9 @@ public:
     
     // implement the "static node()" method manually
     CREATE_FUNC(SplashScreen);
+
+private:
+	void gotoGameScene(float time);
 };
 
 #endif // __SPLASHSCREEN_H__

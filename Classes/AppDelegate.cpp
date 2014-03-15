@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
-#include "GameScene.h"
+#include "GlobalDefine.h"
+#include "SplashScreen.h"
 
 USING_NS_CC;
 
@@ -24,12 +25,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
-	pEGLView->setDesignResolutionSize(2560, 1440, kResolutionNoBorder);
-    // create a scene. it's an autorelease object
-    CCScene *pScene = GameScene::create();
+	pEGLView->setDesignResolutionSize(GMCFG_DESIGNRESOLUSION_WIDTH, GMCFG_DESIGNRESOLUSION_HEIGHT, kResolutionNoBorder);
 
+	CCFileUtils* pfileUtils = CCFileUtils::sharedFileUtils();
+	pfileUtils->addSearchPath(PATH_FONT_ROOT);
+	pfileUtils->addSearchPath(PATH_IMAGE_ROOT);
+	pfileUtils->addSearchPath(PATH_STAGE_ROOT);
+	pfileUtils->addSearchPath(PATH_UI_ROOT);
+
+    // create a scene. it's an autorelease object
+    CCScene *pSplash = SplashScreen::scene();
+	
     // run
-    pDirector->runWithScene(pScene);
+	pDirector->runWithScene(pSplash);
 
     return true;
 }

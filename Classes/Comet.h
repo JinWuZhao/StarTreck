@@ -1,14 +1,13 @@
-#ifndef __PLANE_H__
-#define __PLANE_H__
-
+#ifndef __COMET_H__
+#define __COMET_H__
 #include "Actor.h"
 
-class Plane :
+class Comet :
 	public Actor
 {
 public:
-	Plane(void);
-	virtual ~Plane(void);
+	Comet();
+	virtual ~Comet();
 
 	virtual bool init();
 	virtual void update(float dt);

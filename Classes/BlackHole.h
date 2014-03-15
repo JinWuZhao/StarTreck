@@ -1,15 +1,15 @@
-//ÐÐÐÇ
-#ifndef __PLANET_H__
-#define __PLANET_H__
+//ºÚ¶´
+#ifndef __BLACKHOLE_H__
+#define __BLACKHOLE_H__
 
 #include "StarBase.h"
 
-class Planet :
+class BlackHole :
 	public StarBase
 {
 public:
-	Planet();
-	virtual ~Planet();
+	BlackHole();
+	virtual ~BlackHole();
 
 	virtual bool init();
 

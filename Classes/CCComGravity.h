@@ -1,10 +1,10 @@
-//万有引力组件
+//万有引力组件，依赖组件：CCComRigidBody
 
 #ifndef __CCCOMGRAVITY_H__
 #define __CCCOMGRAVITY_H__
 
 #include "cocos2d.h"
-//#include <list>
+
 
 class CCComGravity :
 	public cocos2d::CCComponent

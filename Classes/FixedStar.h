@@ -1,15 +1,15 @@
-//–––«
-#ifndef __PLANET_H__
-#define __PLANET_H__
+//∫„–«
+#ifndef __FIXEDSTAR_H__
+#define __FIXEDSTAR_H__
 
 #include "StarBase.h"
 
-class Planet :
+class FixedStar :
 	public StarBase
 {
 public:
-	Planet();
-	virtual ~Planet();
+	FixedStar();
+	virtual ~FixedStar();
 
 	virtual bool init();
 
@@ -19,6 +19,7 @@ public:
 
 private:
 	void beginContact(cocos2d::CCNode* pOther);
+
 };
 
 #endif

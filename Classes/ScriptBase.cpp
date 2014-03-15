@@ -3,7 +3,7 @@
 
 ScriptBase::ScriptBase(void)
 	: CCObject(),
-	m_pNode(NULL)
+	m_pOwner(NULL)
 {
 }
 
@@ -30,8 +30,17 @@ void ScriptBase::end()
 
 void ScriptBase::setNdoe( cocos2d::CCNode* pNode )
 {
-	if (!m_pNode)
+	if (!m_pOwner)
 	{
-		m_pNode = pNode;
+		m_pOwner = pNode;
+	}
+}
+
+void ScriptBase::destroySelf(void)
+{
+	if (m_pOwner)
+	{
+		m_pOwner->removeFromParent();
+		m_pOwner = NULL;
 	}
 }

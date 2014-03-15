@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" standalone="yes" ?>
-<Root>
-  <Item Type="DoubleUpDown" Name="Timebeyond" Key = "TotalTime" Default="10.0"/>
-</Root>

@@ -1,3 +1,5 @@
+//脚本组件，为CCNode添加执行逻辑
+
 #ifndef __CCCOMSCRIPT_H__
 #define __CCCOMSCRIPT_H__
 
@@ -22,6 +24,7 @@ public:
     virtual void update(float delta);
 
 	void setScript(ScriptBase* pScript);
+	ScriptBase* getScript(void) { return m_pScript; }
 
 	std::string getScriptName(void);
 

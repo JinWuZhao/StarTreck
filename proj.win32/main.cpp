@@ -1,6 +1,7 @@
 #include "main.h"
 #include "AppDelegate.h"
 #include "CCEGLView.h"
+#include "../Classes/GlobalDefine.h"
 
 USING_NS_CC;
 
@@ -27,7 +28,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setViewName("HelloCpp");
-    eglView->setFrameSize(1280, 720);
+	eglView->setFrameSize(GMCFG_FRAMESIZE_WIDTH, GMCFG_FRAMESIZE_HEIGHT);
 
 	int ret = CCApplication::sharedApplication()->run();
 

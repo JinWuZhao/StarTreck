@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" standalone="yes" ?>
-<Root>
-  <Item Type="IntegerUpDown" Name="Node Tag" Key = "Tag" Default="10000" />
-  <Item Type="DoubleUpDown" Name="ScaleX" Key = "ScaleX" Default="1.0"/>
-  <Item Type="DoubleUpDown" Name="ScaleY" Key = "ScaleY" Default="1.0"/>
-  <Item Type="DoubleUpDown" Name="Duration" Key = "Duration" Default="1.0"/>
-</Root>

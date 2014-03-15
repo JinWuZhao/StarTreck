@@ -1,4 +1,5 @@
 #include "SplashScreen.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -35,6 +36,9 @@ void SplashScreen::onEnter()
 	CCLayer::onEnter();
 
 	CCLOG("------------------GameScene::onEnter()-----------------");
+
+	scheduleOnce(schedule_selector(SplashScreen::gotoGameScene), 4000.f);
+
 }
 
 void SplashScreen::onExit()
@@ -42,4 +46,10 @@ void SplashScreen::onExit()
 	CCLayer::onExit();
 
 	CCLOG("------------------GameScene::onExit()-----------------");
+}
+
+void SplashScreen::gotoGameScene(float time)
+{
+	GameScene* pGameScene = GameScene::create();
+	CCDirector::sharedDirector()->replaceScene(pGameScene);
 }

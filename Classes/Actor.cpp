@@ -21,7 +21,7 @@ bool Actor::init()
 		//CCLOG("Actor::init() begin.");
 		CCComRigidBody* comRigidBody = CCComRigidBody::create();
 		CC_BREAK_IF(!comRigidBody);
-		if (!m_pNode->addComponent(comRigidBody))
+		if (!m_pOwner->addComponent(comRigidBody))
 		{
 			CC_SAFE_DELETE(comRigidBody);
 			return false;

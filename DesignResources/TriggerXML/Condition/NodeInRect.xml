@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" standalone="yes" ?>
-<Root>
-  <Item Type="IntegerUpDown" Name="Node Tag" Key = "Tag" Default="10000"/>
-  <Item Type="IntegerUpDown" Name="Rect.origin.x" Key = "originX" Default="480"/>
-  <Item Type="IntegerUpDown" Name="Rect.origin.y" Key = "originY" Default="320"/>
-  <Item Type="IntegerUpDown" Name="Rect.size.Width" Key = "sizeWidth" Default="50"/>
-  <Item Type="IntegerUpDown" Name="Rect.size.Height" Key = "sizeHeight" Default="50" />
-</Root>

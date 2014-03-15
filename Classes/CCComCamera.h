@@ -1,3 +1,5 @@
+//摄像机组件，依赖组件：CCComRigidBody
+
 #ifndef __CCCOMCAMERA_H__
 #define __CCCOMCAMERA_H__
 
@@ -22,6 +24,9 @@ public:
 	void setBoundingBox(cocos2d::CCSize& boxSize);
 
 private:
+	void beginContact(cocos2d::CCNode* pOther);
+	void endContact(cocos2d::CCNode* pOther);
+
 	Camera*			m_pCamera;
 };
 

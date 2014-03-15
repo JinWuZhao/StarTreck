@@ -124,3 +124,19 @@ cocos2d::CCPoint CCComRigidBody::getVelocity(void)
 	b2Vec2 velocity = m_pBody->GetLinearVelocity();
 	return ccp(velocity.x, velocity.y)*(PhysicsWorld::sharedPhysicsWorld()->getM2pRatio());
 }
+
+void CCComRigidBody::setPosition(const cocos2d::CCPoint& pos)
+{
+	int ratio = PhysicsWorld::sharedPhysicsWorld()->getP2mRatio();
+	m_pBody->SetTransform(b2Vec2(pos.x*ratio, pos.y*ratio), m_pBody->GetAngle());
+}
+
+void CCComRigidBody::registerBeginContactEvent(cocos2d::CCObject* user, SEL_CONTACT sel)
+{
+	PhysicsWorld::sharedPhysicsWorld()->registerBeginContactEvent(m_pBody, user, sel);
+}
+
+void CCComRigidBody::registerEndContactEvent(cocos2d::CCObject* user, SEL_CONTACT sel)
+{
+	PhysicsWorld::sharedPhysicsWorld()->registerEndContactEvent(m_pBody, user, sel);
+}

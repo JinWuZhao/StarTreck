@@ -1,19 +1,19 @@
-#include "Planet.h"
-#include "IContactListener.h"
+#include "BlackHole.h"
 #include "CCComRigidBody.h"
 #include "GlobalDefine.h"
+#include "IContactListener.h"
 
-Planet::Planet()
+BlackHole::BlackHole()
 :StarBase()
 {
 }
 
 
-Planet::~Planet()
+BlackHole::~BlackHole()
 {
 }
 
-bool Planet::init()
+bool BlackHole::init()
 {
 	bool bRet = false;
 	do
@@ -22,28 +22,28 @@ bool Planet::init()
 
 		CCComRigidBody* comRigidBody = static_cast<CCComRigidBody*>(m_pOwner->getComponent("CCComRigidBody"));
 		CC_BREAK_IF(!comRigidBody);
-		comRigidBody->registerBeginContactEvent(this, contact_selector(Planet::beginContact));
+		comRigidBody->registerBeginContactEvent(this, contact_selector(BlackHole::beginContact));
 
 		bRet = true;
 	} while (0);
 	return bRet;
 }
 
-void Planet::update(float dt)
+void BlackHole::update(float dt)
 {
 	
 }
 
-void Planet::end()
+void BlackHole::end()
 {
 	
 }
 
-void Planet::beginContact(cocos2d::CCNode* pOther)
+void BlackHole::beginContact(cocos2d::CCNode* pOther)
 {
 	if (pOther)
 	{
-		if (pOther->getTag()/ID_MASK == ID_COMET)
+		if (pOther->getTag() / ID_MASK == ID_COMET)
 		{
 			//TODO
 		}

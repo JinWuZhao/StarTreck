@@ -25,9 +25,6 @@
     <Filter Include="Classes\utils">
       <UniqueIdentifier>{5ae50361-5a69-439d-83ff-e001565ca584}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\scripts\helpers">
-      <UniqueIdentifier>{d167f489-8398-4f43-91bf-ba06292870eb}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,22 +39,10 @@
     <ClCompile Include="..\Classes\GameScene.cpp">
       <Filter>Classes\scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MainMenuScene.cpp">
-      <Filter>Classes\scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LoadingScreen.cpp">
-      <Filter>Classes\scenes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SplashScreen.cpp">
       <Filter>Classes\scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Actor.cpp">
-      <Filter>Classes\scripts\actors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Plane.cpp">
-      <Filter>Classes\scripts\actors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Planet.cpp">
       <Filter>Classes\scripts\actors</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ScriptBase.cpp">
@@ -87,12 +72,6 @@
     <ClCompile Include="..\Classes\GLES-Render.cpp">
       <Filter>Classes\utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CCComPlanet.cpp">
-      <Filter>Classes\components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CCComNormalObjet.cpp">
-      <Filter>Classes\components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\StageManager.cpp">
       <Filter>Classes\utils</Filter>
     </ClCompile>
@@ -104,6 +83,33 @@
     </ClCompile>
     <ClCompile Include="..\Classes\CameraActor.cpp">
       <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CCComCelestialBody.cpp">
+      <Filter>Classes\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Meteorolite.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Comet.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StarBase.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BlackHole.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FixedStar.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Planet.cpp">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainMenuScene.cpp">
+      <Filter>Classes\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoadingScreen.cpp">
+      <Filter>Classes\layers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,22 +125,10 @@
     <ClInclude Include="..\Classes\GameScene.h">
       <Filter>Classes\scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MainMenuScene.h">
-      <Filter>Classes\scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LoadingScreen.h">
-      <Filter>Classes\scenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\SplashScreen.h">
       <Filter>Classes\scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Actor.h">
-      <Filter>Classes\scripts\actors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Planet.h">
-      <Filter>Classes\scripts\actors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Plane.h">
       <Filter>Classes\scripts\actors</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ScriptBase.h">
@@ -164,12 +158,6 @@
     <ClInclude Include="..\Classes\GLES-Render.h">
       <Filter>Classes\utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CCComPlanet.h">
-      <Filter>Classes\components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CCComNormalObjet.h">
-      <Filter>Classes\components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\StageManager.h">
       <Filter>Classes\utils</Filter>
     </ClInclude>
@@ -184,6 +172,39 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CameraActor.h">
       <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\IContactListener.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GlobalDefine.h">
+      <Filter>Classes\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CCComCelestialBody.h">
+      <Filter>Classes\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Meteorolite.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Comet.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StarBase.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BlackHole.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FixedStar.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Planet.h">
+      <Filter>Classes\scripts\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainMenuScene.h">
+      <Filter>Classes\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoadingScreen.h">
+      <Filter>Classes\layers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,35 +3,41 @@
 
 //////////////////////////////////////////////////////////////////////////
 //include
+#include "GlobalDefine.h"
 #include "ScriptBase.h"
-
 #include "Actor.h"
 #include "CameraActor.h"
+#include "Comet.h"
+#include "Meteorolite.h"
+#include "FixedStar.h"
 #include "Planet.h"
-//////////////////////////////////////////////////////////////////////////
-//id
-#define ID_FILTER 100
-
-#define ID_CAMERA 999
-#define ID_EARTH 101
-#define ID_MOON 102
+#include "BlackHole.h"
 //////////////////////////////////////////////////////////////////////////
 
 static ScriptBase* _createScript(int tag)
 {
 	ScriptBase* pScript = NULL;
-	switch (tag / ID_FILTER)
+	switch (tag / ID_MASK)
 	{
 		//////////////////////////////////////////////////////////////////////////
 		//create
 	case ID_CAMERA:
 		pScript = new CameraActor();
 		break;
-	case ID_EARTH:
+	case ID_COMET:
+		pScript = new Comet();
+		break;
+	case ID_METEOROLITE:
+		pScript = new Meteorolite();
+		break;
+	case ID_FIXEDSTAR:
+		pScript = new FixedStar();
+		break;
+	case ID_PLANET:
 		pScript = new Planet();
 		break;
-	case ID_MOON:
-		pScript = new Planet();
+	case ID_BLACKHOLE:
+		pScript = new BlackHole();
 		break;
 		//////////////////////////////////////////////////////////////////////////
 	}

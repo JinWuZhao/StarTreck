@@ -6,12 +6,10 @@
 #include "DebugLayer.h"
 #include "StageManager.h"
 #include "Camera.h"
+#include "GlobalDefine.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
-
-#define ACTOR_Z_ORDER 100
-#define DEBUGLAYER_Z_ORDER 50
 
 void GameScene::onEnter()
 {
@@ -26,10 +24,11 @@ void GameScene::onEnter()
 		//create Physics World
 		CC_BREAK_IF(!PhysicsWorld::sharedPhysicsWorld()->init());
 
+#if GMCFG_SHOWDEBUGINFO
 		DebugLayer* debugLayer = DebugLayer::create();
 		CC_BREAK_IF(!debugLayer);
-		addChild(debugLayer, DEBUGLAYER_Z_ORDER);
-		//debugLayer->setVertexZ(1);
+		addChild(debugLayer, ZORDER_DEBUGLAYER);
+#endif
 
 		//load scenenodes
 		StageManager* stageMgr = StageManager::sharedStageManager();
@@ -37,11 +36,11 @@ void GameScene::onEnter()
 		CC_BREAK_IF(!stageMgr->readStageData(stageData));
 		CCNode* pSceneRoot = stageMgr->loadStage(stageData[0].name);
 		CC_BREAK_IF(!pSceneRoot);
-		addChild(pSceneRoot, ACTOR_Z_ORDER);
+		addChild(pSceneRoot, ZORDER_ACTORLAYER);
 
 		//camera
 		CCNode* pCameraActor = CCNode::create();
-		pCameraActor->setTag(99900);
+		pCameraActor->setTag(TAG_CAMERAACTOR);
 		pSceneRoot->addChild(pCameraActor);
 
 		//init nodes
@@ -53,11 +52,10 @@ void GameScene::onEnter()
 
 void GameScene::onExit()
 {
-	CCScene::onExit();
 	CCLOG("------------------GameScene::onExit()-----------------");
-	unscheduleUpdate();
-	
 	PhysicsWorld::sharedPhysicsWorld()->end();
+
+	CCScene::onExit();
 }
 
 void GameScene::update( float dt )

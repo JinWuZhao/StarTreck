@@ -1,4 +1,5 @@
 #include "StageManager.h"
+#include "GlobalDefine.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -41,7 +42,7 @@ bool StageManager::readStageData(std::vector<StageInfo>& stageData)
 	do
 	{
 		rapidjson::Document stageDoc;
-		CC_BREAK_IF(!readStageConfig("StageDef.json", stageDoc));
+		CC_BREAK_IF(!readStageConfig(FILENAME_STAGEDEFINE, stageDoc));
 		CC_BREAK_IF(!parseStageData(stageDoc, stageData));
 		ret = true;
 	} while (0);
